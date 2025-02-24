@@ -2,11 +2,13 @@ package tests.ui.boards;
 
 import api.boards.BoardsMethods;
 import api.lists.ListsMethods;
+import api.members.MembersMethods;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import models.board.CreateBoardResponse;
+import models.members.GetMemberResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,8 +16,9 @@ import pages.BoardPage;
 import pages.HomePage;
 import pages.AtlassianSSOPage;
 import pages.MainPage;
-import tests.BaseTest;
+import tests.ui.BaseTest;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static helpers.EnvironmentHelper.password;
 import static helpers.EnvironmentHelper.username;
 
@@ -47,6 +50,13 @@ public class BoardTests extends BaseTest {
             .setBoardName(boardName)
             .clickOnCreateBoardButton();
         boardPage.checkThatTheBoardWasCreated(boardName);
+
+        // Clean up
+        MembersMethods membersMethods = new MembersMethods();
+        BoardsMethods boardsMethods = new BoardsMethods();
+        GetMemberResponse member = membersMethods.getMember();
+        String board = member.getIdBoards().getFirst();
+        boardsMethods.deleteBoard(board);
 
         // Log out.
         mainPage.openUsersMenu()
@@ -84,7 +94,7 @@ public class BoardTests extends BaseTest {
 
     @Test
     @DisplayName("Add a card to the list.")
-    public void addDescriptionToTheCard() {
+    public void addCardToTheList() {
         BoardsMethods boardsMethods = new BoardsMethods();
         ListsMethods listsMethods = new ListsMethods();
         String boardDesc = "This is a board for UI tests. Yep, I'm cool.";
@@ -99,6 +109,8 @@ public class BoardTests extends BaseTest {
             .clickContinueOrLogInButton()
             .setPassword(password)
             .clickContinueOrLogInButton();
+        // Forced Evil. Without this waiting, the test fails.
+        sleep(1000);
         mainPage.openBoard();
         boardPage.clickAddCardButtonOnList()
             .setCardTitle(cardTitle)

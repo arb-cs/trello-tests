@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import helpers.AllureAttachments;
 import helpers.RunSettings;
@@ -8,8 +8,6 @@ import org.junit.jupiter.api.AfterEach;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-
-import static helpers.EnvironmentHelper.isRemote;
 
 public class BaseTest {
     @BeforeAll
@@ -27,10 +25,7 @@ public class BaseTest {
         AllureAttachments.screenshotAs("Last screenshot");
         AllureAttachments.pageSource();
         AllureAttachments.browserConsoleLogs();
-
-        if (!isRemote) {
-            AllureAttachments.addVideo();
-        }
+        AllureAttachments.addVideo();
 
         Selenide.closeWebDriver();
     }

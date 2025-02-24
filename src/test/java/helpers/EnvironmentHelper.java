@@ -22,7 +22,4 @@ public final class EnvironmentHelper {
     public static final String browserVersion = System.getProperty("browserVersion", Trello.config.browserVersion());
     public static final String browserSize = System.getProperty("browserSize", Trello.config.browserSize());
     public static final String pageLoadStrategy = System.getProperty("pageLoadStrategy", Trello.config.pageLoadStrategy());
-
-    // Remote run
-    public static final boolean isRemote = remote.isBlank();
 }

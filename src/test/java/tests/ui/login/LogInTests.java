@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import pages.HomePage;
 import pages.AtlassianSSOPage;
 import pages.MainPage;
-import tests.BaseTest;
+import tests.ui.BaseTest;
 
 import static helpers.EnvironmentHelper.username;
 import static helpers.EnvironmentHelper.password;

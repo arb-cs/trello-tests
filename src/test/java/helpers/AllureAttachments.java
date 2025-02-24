@@ -23,7 +23,7 @@ public class AllureAttachments {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 
-    @Attachment(value = "{attachName}", type = "text/plain")
+    @Attachment(value = "Page source", type = "text/plain")
     public static byte[] pageSource() {
         return Objects.requireNonNull(getWebDriver().getPageSource()).getBytes(StandardCharsets.UTF_8);
     }
