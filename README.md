@@ -26,6 +26,7 @@
 <a href="https://qameta.io/"> <img src="media/images/logos/allureTestOps.svg" height="50" width="50" alt="Allure TestOps logo.">
 <a href="https://www.jenkins.io/"> <img src="media/images/logos/jenkins.svg" height="50" width="50" alt="Jenkins logo."/></a>
 <a href="https://aerokube.com/selenoid/"> <img src="media/images/logos/selenoid.svg" height="50" width="50" alt="Selenoid logo."></a>
+<a href="https://telegram.org/"> <img src="media/images/logos/telegram.png" height="50" width="50" alt="Telegram logo."/></a>
 </p>
 
 Автоматизация тестовых сценариев выполнена с помощью языка программирования `Java`.
