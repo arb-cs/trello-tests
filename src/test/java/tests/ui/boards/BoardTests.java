@@ -55,7 +55,7 @@ public class BoardTests extends BaseTest {
         MembersMethods membersMethods = new MembersMethods();
         BoardsMethods boardsMethods = new BoardsMethods();
         GetMemberResponse member = membersMethods.getMember();
-        String boardId = member.getIdBoards().getFirst();
+        String boardId = member.getIdBoards().get(0);
         boardsMethods.deleteBoard(boardId);
 
         // Log out.
