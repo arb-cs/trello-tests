@@ -34,7 +34,7 @@ public class MainPage {
 
     @Step("Click on the board creation element.")
     public MainPage clickOnCreateNewBoardElement() {
-        createBoardTile.click();
+        createBoardTile.scrollIntoView(true).click();
         return this;
     }
 

@@ -29,7 +29,7 @@
 </p>
 
 Авто-тесты реализованы на языке программирования `Java`.
-В качестве системы сборки и запуска тестов используется `Gradle`, а в качестве фреймворка для тестирования `JUnit5`.
+В качестве системы сборки используется `Gradle`, а в качестве фреймворка для тестирования `JUnit5`.
 Для автоматизации графического (пользовательского) интерфейса используется библиотека `Selenide`, а для проверки API —
 `REST-assured`.
 Для предоставления отчетности о выполнении тестов использован инструмент — `Allure-Report`.
@@ -51,6 +51,14 @@
 выступает — `Jenkins`.
 
 ## Реализация тестов.
+
+#### Тесты API:
+Выполнена проверка методов на предмет того, что они выполняют свою бизнес-функцию (В том числе, проверка значений определенных полей в теле ответа).
+Помимо этого, конечно, есть проверки статусов кода. Также, в некоторых тестах проверяется соблюдение контракта.
+
+#### Тесты UI:
+Есть тесты проверяющие аутентификацию пользователя, включая негативные сценарии.
+Дополнительно, есть сценарии проверяющие основные пользовательские действия с базовыми сущностями Trello. Такие как создание досок, списков и карточек.
 
 ## Запуск авто-тестов.
 
@@ -84,26 +92,60 @@ UI:
 gradle clean ui_tests
 ```
 
-Для удаленного запуска необходимо выполнить:
-
 #### Запуск тестов из Jenkins:
 
 ```bash
 clean
 ${TASK}
---stacktrace
+-DbaseUrl=${BASE_URL}
+-DbaseURI=${BASE_URI}
+-Dremote=https://${SELENOID_USER}:${SELENOID_PASSWORD}@${REMOTE}/wd/hub
+-Dbrowser=${BROWSER}
+-DbrowserVersion=${VERSION}
+-DbrowserSize=${BROWSER_SIZE}
+-Dkey=${API_KEY}
+-Dtoken=${API_TOKEN}
+-Dusername="${USERNAME}"
+-Dpassword=${PASSWORD}
 ```
+> `baseUrl` — адрес стенда для UI тестов.
+> `baseURI` — адрес стенда для API тестов.
+> `remote` — адрес на котором развернут Selenoid (для удаленного выполнения UI тестов).
+> `browser` — Имя браузера.
+> `browserVersion` — Версия браузера.
+> `browserSize` — Размер окна браузера.
+> `key` — API ключ.
+> `token` — API токен.
+> `username` — Логин пользователя.
+> `password` — Пароль пользователя.
 
 ## Визуализация.
 
-Пример Allure-отчета:
-<p style="text-align: center;">
-</p>
+Запуск тестов в <a href="https://jenkins.autotests.cloud/job/C31-arb_cs01-DiplomaProject/"> Jenkins: </a>
+<div style="text-align: center;">
+    <img src="media/images/screenshots/jenkins.png" alt="Run a freestyle pipeline in Jenkins.">
+</div>
+
+
+Пример <a href="https://jenkins.autotests.cloud/job/C31-arb_cs01-DiplomaProject/30/allure/"> Allure-отчета: </a>
+<div style="text-align: center;">
+    <img src="media/images/screenshots/allureMain.png" alt="Allure report.">
+</div>
+
+<div style="text-align: center;">
+    <img src="media/images/screenshots/allureByTests.png" alt="Allure report.">
+</div>
+
+<div style="text-align: center;">
+    <img src="media/images/screenshots/allureUITests.png" alt="Allure report.">
+</div>
 
 Пример отчета который отправляется в telegram:
-<p style="text-align: center;">
-</p>
+<div style="text-align: center;">
+    <img src="media/images/screenshots/telegramNotifications.png" alt="Telegram notifications.">
+</div>
 
 Видео выполнения теста в Selenoid:
-<p style="text-align: center;">
-</p>
+<div style="text-align: center;">
+    <img src="media/videos/successfulLogInTest.gif" alt="A video of a test that is being executed on Selenoid.">
+</div>
