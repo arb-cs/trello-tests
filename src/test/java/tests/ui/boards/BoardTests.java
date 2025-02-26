@@ -46,6 +46,7 @@ public class BoardTests extends BaseTest {
             .clickContinueOrLogInButton()
             .setPassword(password)
             .clickContinueOrLogInButton();
+        sleep(1000);
         mainPage.clickOnCreateNewBoardElement()
             .setBoardName(boardName)
             .clickOnCreateBoardButton();
