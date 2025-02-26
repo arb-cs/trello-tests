@@ -105,10 +105,6 @@ ${TASK}
 -Dbrowser=${BROWSER}
 -DbrowserVersion=${VERSION}
 -DbrowserSize=${BROWSER_SIZE}
--Dkey=${API_KEY}
--Dtoken=${API_TOKEN}
--Dusername="${USERNAME}"
--Dpassword=${PASSWORD}
 ```
 > `baseUrl` — Адрес стенда для UI тестов.
 > 
@@ -121,14 +117,6 @@ ${TASK}
 > `browserVersion` — Версия браузера.
 > 
 > `browserSize` — Размер окна браузера.
-> 
-> `key` — API ключ.
-> 
-> `token` — API токен.
-> 
-> `username` — Логин пользователя.
-> 
-> `password` — Пароль пользователя.
 
 ## Визуализация.
 
