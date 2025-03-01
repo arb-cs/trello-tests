@@ -49,7 +49,7 @@ public class BoardsNegativeTests extends BaseTest {
     }
 
     @Test
-    @Step("Call the method to create a Board with an invalid type in the parameter.")
+    @Step("Call the method to create a Board with an empty body.")
     public void createBoardWhenBodyIsEmpty() {
         CreateBoardResponse response =
             given()
